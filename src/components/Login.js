@@ -28,8 +28,8 @@ const Login = () => {
   return (<>
     <Formik
       initialValues={{
-        correo: '',
-        contrasena: '',
+        correo: 'andres@gmail.com',
+        contrasena: '123',
       }}
       onSubmit={(valores) => {
         console.log(valores);

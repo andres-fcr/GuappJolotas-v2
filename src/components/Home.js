@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Bienvenida, Botones, Centrar, Iniciar, Titulo } from '../styles/HomeStyles';
+
 
 const Home = () => {
     return (
@@ -12,7 +12,7 @@ const Home = () => {
                 <Button as={Link} to="/iniciarSesion" variant="primary" className='mb-4'>
                     Iniciar Sesion
                 </Button>
-                <Button as={Link} to="/crearCuenta" variant="primar">Crear Cuenta
+                <Button as={Link} to="/crearCuenta" variant="link">Crear Cuenta
                 </Button>
             </div>
         </div>

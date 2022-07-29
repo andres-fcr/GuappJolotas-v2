@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Card, Form, InputGroup } from 'react-bootstrap';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs'
+
 const Productos = ({ tarea }) => {
 
   const [lista, setLista] = useState("Guajalotes");
