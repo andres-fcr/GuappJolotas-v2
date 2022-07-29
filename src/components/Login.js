@@ -70,7 +70,7 @@ const Login = () => {
               {/* </div> */}
 
               <div className='d-grid gap-2 mx-auto mt-5' >
-                <Button type='submit' className='mb-2 mx-5'>Iniciar Sesión</Button>
+                <Button type='submit' className='mb-2'>Iniciar Sesión</Button>
                 <Button type='button' as={Link} to="/crearCuenta" variant="link">Registrate</Button>
               </div>
             </div>

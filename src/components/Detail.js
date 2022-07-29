@@ -1,12 +1,8 @@
 import React from 'react';
-import { Card, Carousel } from 'react-bootstrap';
+import { Button, Card, Carousel } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import Counter from '../actions/Counter';
-import { Beba, Boto, Cafe, Carro,  Contenido, Comi, Contodo, Flecha, Foto, Fotografias, Nombre, Prepio, Sabroso, Combo, Contenga, Contenidito} from '../styles/SliderStyles';
-
-
-
-
+import { Beba, Boto, Cafe, Carro, Contenido, Comi, Contodo, Flecha, Foto, Fotografias, Nombre, Prepio, Sabroso, Combo, Contenga, Contenidito } from '../styles/SliderStyles';
 
 const Detail = ({ tarea }) => {
 
@@ -18,7 +14,7 @@ const Detail = ({ tarea }) => {
 
   const buscado = tarea.find((obj) => obj.id === Number(num));
 
-  const { precio } = buscado
+  const { precio, imagen, product } = buscado
 
   const info = tarea.filter(function (element) {
     return element.clase === buscado.clase;
@@ -31,6 +27,7 @@ const Detail = ({ tarea }) => {
   const drink = tarea.filter(function (element) {
     return element.clase === "Bebidas"
   })
+
   const eat = tarea.filter(function (element) {
     return element.clase === "Tamales"
   })
@@ -58,127 +55,139 @@ const Detail = ({ tarea }) => {
     }
   }
 
- 
-
-
-    function Bebida() {
-        return (
-            <div>
-                <p>Selecciona la bebida que más te guste y disfruta de tu desayuno.</p>
-                <Contodo>
-                    {
-                        drink.map(x => (
-                                <Cafe key={x.id} style={{ width: '10rem' }}>
-                                    <Beba variant="top" src={x.imagen} />
-                                    <Card.Body>
-                                        <Card.Title>{x.name}</Card.Title>
-                                        <Card.Text>
-                                            {x.precio}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Cafe>
-                        ))
-                    }
-                </Contodo>
-            </div>
-        )
-    }
-   
-  
+  function Bebida() {
+    return (
+      <div>
+        <p>Selecciona la bebida que más te guste y disfruta de tu desayuno.</p>
+        <div className=' col text-center'>
+          <div className='row row-cols-2'>
+            {
+              drink.map(x => (
+                <div key={x.id} className='row-md-auto my-3 my-sm-4'>
+                  <Card
+                    className='h-100 d-inline-block'
+                    height={200}>
+                    <img variant="top" src={x.imagen} alt={x.name} width={70}
+                      className="img-fluid" />
+                    <Card.Body>
+                      <Card.Title className='fs-5 fw-bold'>{x.name}</Card.Title>
+                      <Card.Text className='precio'>
+                        ${x.precio} MXN
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   function Comida() {
     return (
       <div>
         <p>Selecciona la torta que más te guste y disfruta de tu desayuno</p>
-
-        <Contodo>
-        {
-          eat.map(x => (
-            <Card key={x.id} style={{ width: '13rem' }}>
-              <Comi variant="top" src={x.imagen} />
-              <Card.Body>
-                <Card.Title>{x.name}</Card.Title>
-                <Card.Text>
-                  {x.precio}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))
-        }
-        </Contodo>
-
+        <div className=' col text-center'>
+          <div className='row row-cols-2'>
+            {
+              eat.map(x => (
+                <div key={x.id} className='row-md-auto my-3 my-sm-4'>
+                  <Card
+                    className='h-100 d-inline-block'
+                    height={200}>
+                    <img variant="top" src={x.imagen} alt={x.name} width={70}
+                      className="img-fluid" />
+                    <Card.Body>
+                      <Card.Title className='fs-5 fw-bold'>{x.name}</Card.Title>
+                      <Card.Text className='precio'>
+                        ${x.precio} MXN
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))
+            }
+          </div>
+        </div>
       </div>
     )
   }
 
-   return (
-    <Card>
-    <div>
+  return (
+    <div className='container-sm w-100 mw-auto bg-light shadow p-4 p-sm-5 my-sm-5 rounded'>
+
       <Link to="/producto">
-        <Flecha
+        <img
           src="https://res.cloudinary.com/dbyw7mbt6/image/upload/v1643496365/guappjolotas/Vector_a8gtlb.png"
           alt="back"
+          className='mt-4'
+          height={35}
+          width="auto"
         />
       </Link>
       <Link to="/carrito">
-        <Carro
+        <img
           src="https://res.cloudinary.com/dbyw7mbt6/image/upload/v1643496426/guappjolotas/shopping-cart_pbl62y.png"
           alt="carrito"
+          className='pt-4 float-end'
+          width={35}
+          height="auto"
         />
-      </Link>{" "}
-      <br /> <br />
-      <br /> <br />
-
-      <Contenga>
-      <Carousel>
-        {
-          info.map((cs) => (
-
-            <Carousel.Item key={cs.id}>
-              <Fotografias className="d-block w-100" src={cs.imagen} width="2300%" height="230%" alt="" />
-              <Contenidito>
-              <Carousel.Caption>
-                <Nombre>{cs.product}</Nombre>
-                <Prepio>{cs.precio}</Prepio>
-              </Carousel.Caption>
-              </Contenidito>
-            </Carousel.Item>
-        ))
-        }
-      </Carousel>
-      </Contenga>
+      </Link>
 
 
+      <div className='col'>
+        <img
+          src={imagen}
+          alt="imagen producto"
+          width={200}
+          className='img-fluid mx-auto row mb-3'
+        />
+      </div>
+      <div className='w-50 mx-auto fw-bold text-center fs-3 mb-3'>
+        {product}
+      </div>
+      <div className='w-50 mx-auto fw-bold text-center fs-3 mb-3 precio'>
+        ${precio} MXN
+      </div>
+
+
+      <div className='container bg-white shadow py-3 rounded w-50 mb-5' >
         <Counter />
-       
-        
-        <Sabroso>Sabor</Sabroso>
-        <Contenido>
+      </div>
+
+      <div className='fs-2 fw-bold'>Sabor</div>
+
+      <div className=' col text-center'>
+        <div className='row row-cols-3 '>
           {iconos.map((i) => (
-            <div key={i.id}>
+            <div className='row-md-auto my-3 my-sm-4' key={i.id}>
               <Link to={`/detalle/${i.clase}${i.id}`}>
-                <Foto src={i.icono} alt={i.product} />
+                <img src={i.icono} alt={i.product} width={65} />
               </Link>
             </div>
           ))}
-        </Contenido>
-        <Combo>Guajolocombo</Combo>
-        {withNoDigits === "Tamales" ? (
-          <Bebida />
-        ) : withNoDigits === "Guajalotes" ? (
-          <Bebida />
-        ) : (
-          <Comida />
-        )}
-        
-       <br /><br />
-          <Boto onClick={() => agregar()}>
-            Agregar al carrito {precio}
-          </Boto>
-    
+        </div>
       </div>
-      </Card>
-    );
+
+      <Combo>Guajolocombo</Combo>
+      {withNoDigits === "Tamales" ? (
+        <Bebida />
+      ) : withNoDigits === "Guajalotes" ? (
+        <Bebida />
+      ) : (
+        <Comida />
+      )}
+
+      <br /><br />
+      <Button onClick={() => agregar()}>
+        Agregar al carrito {precio}
+      </Button>
+
+    </div>
+  );
 };
 
 export default Detail;

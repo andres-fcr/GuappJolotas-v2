@@ -13,17 +13,23 @@ const Counter = () => {
     const handleAdd = () => {
         dispatch({ type: TYPES.INCREMENT })
     }
-    
+
     return (
-        <Sumador className="mb-2">
-            <Button variant="primary" onClick={handleSubstract}>
-                -
-            </Button>
-            <h1>{state.contador}</h1>
-            <Button variant="primar" onClick={handleAdd} >
-                +
-            </Button>
-        </Sumador>
+        <div className="row align-items-end">
+            <div className='col '>
+                <Button variant="outline-dark" onClick={handleSubstract} className="my-auto float-end mb-1">
+                    -
+                </Button>
+            </div>
+            <div className="col mw-25">
+                <h1 className='my-auto text-center'>{state.contador}</h1>
+            </div>
+            <div className='col'>
+                <Button variant="outline-dark " onClick={handleAdd} className="mb-1" >
+                    +
+                </Button>
+            </div>
+        </div>
     );
 }
 

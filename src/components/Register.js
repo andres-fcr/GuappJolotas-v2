@@ -98,7 +98,7 @@ const Register = () => {
                 />
               </Form.Group>
               <div className='d-grid gap-1 mx-auto mt-5' >
-                <Button type='submit' className='mb-2 mx-5'>
+                <Button type='submit' className='mb-2'>
                   Crear Cuenta
                 </Button>
                 <Button type='button' as={Link} to="/iniciarSesion" variant="link">
